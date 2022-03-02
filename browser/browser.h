@@ -5,11 +5,9 @@
 class Browser : public QObject {
     Q_OBJECT
 public:
-    Browser();
-    void loadUrl(QUrl url);
-    void setZoomFactor(qreal factor);
+    Browser(const QUrl &url);
 public slots:
-    void loadUrlString(QString urlString);
+    void loadUrl(const QString &urlString);
 private:
     QWebEngineView *view;
 };
