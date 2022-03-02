@@ -1,5 +1,4 @@
 #include <QApplication>
-#include <QWebEngineView>
 #include "reader.h"
 #include "browser.h"
 

@@ -4,7 +4,7 @@ defmodule Ticker do
   @interval 2_000
 
   def start_link(_) do
-    GenServer.start_link(__MODULE__, 1, name: __MODULE__)
+    GenServer.start_link(__MODULE__, nil, name: __MODULE__)
   end
 
   def init(_) do

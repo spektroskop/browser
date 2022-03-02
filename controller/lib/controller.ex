@@ -1,6 +1,8 @@
 defmodule Controller do
-  require Logger
   use GenServer
+
+  @command Application.compile_env(:controller, :command)
+  @default Application.compile_env(:controller, :default)
 
   def start_link(_) do
     GenServer.start_link(__MODULE__, nil, name: __MODULE__)
@@ -11,12 +13,10 @@ defmodule Controller do
   end
 
   def init(_) do
-    cmd = "../browser/browser.app/Contents/MacOS/browser"
-
     port =
       Port.open(
-        {:spawn_executable, cmd},
-        [:binary, {:args, ["http://localhost:8080/default"]}]
+        {:spawn_executable, @command},
+        [:binary, {:args, [@default]}]
       )
 
     {:ok, port}
