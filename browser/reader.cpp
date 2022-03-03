@@ -1,4 +1,6 @@
+#include <QCoreApplication>
 #include <QTextStream>
+#include <iostream>
 #include "reader.h"
 
 Reader::Reader() {
@@ -7,7 +9,12 @@ Reader::Reader() {
 }
 
 void Reader::read() {
-    QTextStream qin(stdin);
-    QString line = qin.readLine();
-    emit received(line);
+    std::string line;
+
+    if(!std::getline(std::cin, line)) {
+        QCoreApplication::exit();
+        return;
+    }
+
+    emit received(QString::fromStdString(line));
 }
