@@ -1,0 +1,10 @@
+CONFIG += console c++17
+CONFIG -= app_bundle
+TEMPLATE = app
+TARGET = browser
+INCLUDEPATH += .
+QT += webenginewidgets
+HEADERS += config.h request.h reader.h browser.h
+SOURCES += main.cpp config.cpp request.cpp reader.cpp browser.cpp
+target.path +=  $$[QT_INSTALL_BINS]
+INSTALLS += target
